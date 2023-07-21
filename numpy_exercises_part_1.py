@@ -327,16 +327,53 @@ print(d_tan)
 
 # Exercise 4 - Find all the negative numbers in d
 
+d_neg = np.sum(d < 0)
+print(d_neg)
+# 4
 
 
 # Exercise 5 - Find all the positive numbers in d
 
+d_pos = np.sum(d>=0)
+print(d_pos)
+# 14
+
+
 # Exercise 6 - Return an array of only the unique numbers in d.
+
+uniq_d = np.unique(d)
+print(uniq_d)
+# [-90 -45 -30   0  30  45  60  90 120 180 270]
 
 # Exercise 7 - Determine how many unique numbers there are in d.
 
+len(uniq_d)
+# 11
+
 # Exercise 8 - Print out the shape of d.
+
+d_shape = np.shape(d)
+print(d_shape)
+# (3, 6)
+
 
 # Exercise 9 - Transpose and then print out the shape of d.
 
+d_trans = np.transpose(d)
+print(np.shape(d_trans))
+# (6, 3)
+
+
 # Exercise 10 - Reshape d into an array of 9 x 2
+
+d_reshape = np.reshape(d, (9,2))
+print(d_reshape)
+# [[ 90  30]
+#  [ 45   0]
+#  [120 180]
+#  [ 45 -90]
+#  [-30 270]
+#  [ 90   0]
+#  [ 60  45]
+#  [-45  90]
+#  [-45 180]]
