@@ -183,7 +183,7 @@ print(b_transpose)
 
 # Exercise 11 - reshape the array b to be a single list of 6 numbers. (1 x 6)
 
-b_reshape = np.reshape(b, -1)
+b_reshape = np.reshape(b, -1).tolist()
 print(b_reshape)
 
 # Exercise 12 - reshape the array b to be a list of 6 lists, 
@@ -330,6 +330,8 @@ print(d_tan)
 d_neg = np.sum(d < 0)
 print(d_neg)
 # 4
+d[d < 0]
+# array([-90, -30, -45, -45])
 
 
 # Exercise 5 - Find all the positive numbers in d
@@ -337,6 +339,8 @@ print(d_neg)
 d_pos = np.sum(d>=0)
 print(d_pos)
 # 14
+d[d > 0]
+# array([ 90,  30,  45, 120, 180,  45, 270,  90,  60,  45,  90, 180])
 
 
 # Exercise 6 - Return an array of only the unique numbers in d.
