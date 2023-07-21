@@ -16,9 +16,9 @@ print( len(a[under_zero]))
 
 # 2. How many positive numbers are there?
 
-pos_a = np.sum(a >= 0)
+pos_a = np.sum(a > 0)
 print(pos_a)
-# 8
+# 5
 
 
 # 3. How many even positive numbers are there?
@@ -30,12 +30,8 @@ print(len(a[even_a]))
 
 # 4. if you were to add 3 to each data point, how many positive numbers would there be?
 
-plus_three = a + 3
-print((plus_three))
-
-neg_a_three = np.sum(plus_three < 0)
-print(neg_a_three)
-# 2
+((a + 3) > 0).sum()
+# 10
 
 
 # 5. If you squared each number, what would the new mean and standard deviation be?
