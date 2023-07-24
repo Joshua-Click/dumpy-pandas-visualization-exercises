@@ -109,6 +109,62 @@ fruit_count = pd.value_counts(fruit_series)
 
 fruit_count.max()
 
+fruit_series.value_counts().head(1)
+# kiwi    4
+# dtype: int64
+
 # 10. Determine the string value that occurs least frequently in fruits.
 
 fruit_count.min()
+
+fruit_series.value_counts().tail(1)
+# papaya    1
+# dtype: int64
+
+
+# Explore more attributes and methods while you continue to work with the fruits Series.
+
+# 1. Capitalize all the string values in fruits.
+
+fruit_series.str.upper()
+# 0                 KIWI
+# 1                MANGO
+# 2           STRAWBERRY
+# 3            PINEAPPLE
+# 4           GALA APPLE
+# 5     HONEYCRISP APPLE
+# 6               TOMATO
+# 7           WATERMELON
+# 8             HONEYDEW
+# 9                 KIWI
+# 10                KIWI
+# 11                KIWI
+# 12               MANGO
+# 13           BLUEBERRY
+# 14          BLACKBERRY
+# 15          GOOSEBERRY
+# 16              PAPAYA
+# dtype: object
+
+
+# 2. Count the letter "a" in all the string values (use string vectorization).
+
+vowels = list('aeiou')
+letters = list('abcdefghijklmnopqrstuvwxyz')
+fruit_series.isin(vowels).value_counts()
+
+
+
+# 3. Output the number of vowels in each and every string value.
+
+# 4. Write the code to get the longest string value from fruits.
+
+# 5. Write the code to get the string values with 5 or more letters in the name.
+
+# 6. Find the fruit(s) containing the letter "o" two or more times.
+
+# 7.Write the code to get only the string values containing the substring "berry".
+
+# 8. Write the code to get only the string values containing the substring "apple".
+
+# 9. Which string value contains the most vowels?
