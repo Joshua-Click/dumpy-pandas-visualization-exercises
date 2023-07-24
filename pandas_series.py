@@ -242,6 +242,11 @@ fruit_series[fruit_series.str.contains('apple')]
 
 # 9. Which string value contains the most vowels?
 
+
+
+
+
+
 # Exercises Part III
 
 # Use pandas to create a Series named letters from the following string. 
@@ -326,6 +331,7 @@ num_series_float.nsmallest(1)
 
 
 
+
 # 7. Bin the data into 4 equally sized intervals or bins and output how many values fall into each bin.
 
 num_bins_series = pd.cut(num_series_float, 4)
@@ -342,6 +348,9 @@ num_bins_series.value_counts()
 
 scores = [60, 86, 75, 62, 93, 71, 60, 83, 95, 78, 65, 72, 69, 81, 96, 80, 85, 92, 82, 78]
 exam_scores = pd.Series(scores)
+
+exam_scores.dtype
+dtype('int64')
 
 # 1. How many elements are in the exam_scores Series?
 
@@ -365,7 +374,7 @@ exam_scores.describe()
 
 # 3. Plot the Series in a meaningful way and make sure your chart has a title and axis labels.
 
-exam_scores.plot.hist()
+exam_scores.plot.hist().set(xlabel='Grade', ylabel='Frequency')
 
 # 4. Write the code necessary to implement a curve for your exam_grades Series and save this as curved_grades. 
 #    Add the necessary points to the highest grade to make it 100, and add the same number of 
@@ -373,8 +382,41 @@ exam_scores.plot.hist()
 
 # need (100 - max) + every other score
 
+curved_grades = (100 - exam_scores.max()) + exam_scores
+
+print(curved_grades)
+
+# 0      64
+# 1      90
+# 2      79
+# 3      66
+# 4      97
+# 5      75
+# 6      64
+# 7      87
+# 8      99
+# 9      82
+# 10     69
+# 11     76
+# 12     73
+# 13     85
+# 14    100
+# 15     84
+# 16     89
+# 17     96
+# 18     86
+# 19     82
+# dtype: int64
 
 
-# 5. Use a method to convert each of the numeric values in the curved_grades Series into a categorical value of letter grades. For example, 86 should be a 'B' and 95 should be an 'A'. Save this as a Series named letter_grades.
+# 5. Use a method to convert each of the numeric values in the curved_grades 
+# Series into a categorical value of letter grades. 
+# For example, 86 should be a 'B' and 95 should be an 'A'. Save this as a Series named letter_grades.
 
-# 6. Plot your new categorical letter_grades Series in a meaninful way and include a title and axis labels.
+
+
+
+# 6. Plot your new categorical letter_grades Series in a meaninful way and include 
+#    a title and axis labels.
+
+
