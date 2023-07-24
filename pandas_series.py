@@ -328,19 +328,21 @@ num_series_float.nsmallest(1)
 
 # 6. What is the range of the values in the Series?
 
-
-
+num_max = num_series_float.nlargest(1) 
+num_min = num_series_float.nsmallest(1)
+num_range = num_max - num_min
+print(num_range)
 
 
 # 7. Bin the data into 4 equally sized intervals or bins and output how many values fall into each bin.
 
 num_bins_series = pd.cut(num_series_float, 4)
-num_bins_series.value_counts()
+nb = num_bins_series.value_counts()
 
 
 # 8 .Plot the binned data in a meaningful way. Be sure to include a title and axis labels.
 
-
+nb.plot.bar().set(xlabel='Values', ylabel= 'Frequency')
 
 
 
