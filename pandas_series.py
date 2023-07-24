@@ -107,7 +107,7 @@ fruit_count = pd.value_counts(fruit_series)
 
 # 9. Determine the string value that occurs most frequently in fruits.
 
-fruit_count.max()
+fruit_count.idxmax()
 
 fruit_series.value_counts().head(1)
 # kiwi    4
@@ -115,10 +115,20 @@ fruit_series.value_counts().head(1)
 
 # 10. Determine the string value that occurs least frequently in fruits.
 
-fruit_count.min()
 
-fruit_series.value_counts().tail(1)
-# papaya    1
+
+fruit_series.value_counts().nsmallest(n=1, keep='all')
+# strawberry          1
+# pineapple           1
+# gala apple          1
+# honeycrisp apple    1
+# tomato              1
+# watermelon          1
+# honeydew            1
+# blueberry           1
+# blackberry          1
+# gooseberry          1
+# papaya              1
 # dtype: int64
 
 
