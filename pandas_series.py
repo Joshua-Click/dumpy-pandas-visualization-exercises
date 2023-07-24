@@ -352,7 +352,7 @@ scores = [60, 86, 75, 62, 93, 71, 60, 83, 95, 78, 65, 72, 69, 81, 96, 80, 85, 92
 exam_scores = pd.Series(scores)
 
 exam_scores.dtype
-dtype('int64')
+# dtype('int64')
 
 # 1. How many elements are in the exam_scores Series?
 
@@ -415,7 +415,7 @@ print(curved_grades)
 # Series into a categorical value of letter grades. 
 # For example, 86 should be a 'B' and 95 should be an 'A'. Save this as a Series named letter_grades.
 
-
+# letter_grades = curved_grades.apply(lambda x: if x >= 90 = 'A', if x >=80 = 'B', if x >= 70 =, )
 
 
 # 6. Plot your new categorical letter_grades Series in a meaninful way and include 
