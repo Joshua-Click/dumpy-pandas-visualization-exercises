@@ -187,13 +187,14 @@ vowels = list('aeiou')
 fruit_series.isin(vowels).value_counts()
 # False    17
 # dtype: int64
-
+fruit_series.str.count('aeiou')
 
 # 4. Write the code to get the longest string value from fruits.
 
 fruit_series.str.len().max()
 #16
-
+max(fruit_series, key=len)
+# honeycrisp apple
 
 # 5. Write the code to get the string values with 5 or more letters in the name.
 
@@ -242,8 +243,9 @@ fruit_series[fruit_series.str.contains('apple')]
 
 # 9. Which string value contains the most vowels?
 
-
-
+fruit_series[fruit_series.str.count(r'[aeiou]').nlargest(n=1, keep='all')]
+# 5    honeycrisp apple
+# dtype: object
 
 
 
@@ -262,6 +264,7 @@ pd.value_counts(letter_series).head(1)
 # dtype: int64
 
 
+
 # 2. Which letter occurs the Least frequently?
 pd.value_counts(letter_series).tail(1)
 # l    4
@@ -275,15 +278,35 @@ letter_series.isin(vowels).value_counts()
 # True      34
 # dtype: int64
 
+def is_vowel(word):
+    return word in vowels
+letter_series.str.lower().apply(is_vowel).sum()
+# 34
+
+
 # 4. How many consonants are in the Series?
 letter_series.isin(vowels).value_counts()
 #False    166
+
+(~letter_series.str.lower().apply(is_vowel)).sum()
+# 166
 
 # 5. Create a Series that has all of the same letters but uppercased.
 
 cap_series = letter_series.str.upper()
 cap_series
-
+# 0      H
+# 1      N
+# 2      V
+# 3      I
+# 4      D
+#       ..
+# 195    R
+# 196    O
+# 197    G
+# 198    U
+# 199    Y
+# Length: 200, dtype: object
 
 # 6. Create a bar plot of the frequencies of the 6 most commonly occuring letters.
 
@@ -308,6 +331,7 @@ num_series.dtype
 num_series.count()
 # 20
 
+
 # 3. Perform the necessary manipulations by accessing Series attributes and methods to convert 
 #    the numbers Series to a numeric data type.
 
@@ -328,35 +352,38 @@ num_series_float.nsmallest(1)
 
 # 6. What is the range of the values in the Series?
 
-num_max = num_series_float.nlargest(1) 
-num_min = num_series_float.nsmallest(1)
-num_range = num_max - num_min
-print(num_range)
+num_series_float.max() - num_series_float.min()
+# 4789709.57
 
 
 # 7. Bin the data into 4 equally sized intervals or bins and output how many values fall into each bin.
 
 num_bins_series = pd.cut(num_series_float, 4)
 nb = num_bins_series.value_counts()
-
+nb
+# (-4511.11, 1197705.993]       7
+# (3592560.778, 4789988.17]     6
+# (1197705.993, 2395133.385]    4
+# (2395133.385, 3592560.778]    3
+# dtype: int64
 
 # 8 .Plot the binned data in a meaningful way. Be sure to include a title and axis labels.
 
 nb.plot.bar().set(xlabel='Values', ylabel= 'Frequency')
 
 
-
 # Use pandas to create a Series named exam_scores from the following list:
 
 scores = [60, 86, 75, 62, 93, 71, 60, 83, 95, 78, 65, 72, 69, 81, 96, 80, 85, 92, 82, 78]
 exam_scores = pd.Series(scores)
+exam_scores
 
 exam_scores.dtype
 # dtype('int64')
 
 # 1. How many elements are in the exam_scores Series?
 
-exam_scores.count()
+exam_scores.size
 # 20
 
 # 2. Run the code to discover the minimum, the maximum, the mean, and the median 
@@ -415,10 +442,13 @@ print(curved_grades)
 # Series into a categorical value of letter grades. 
 # For example, 86 should be a 'B' and 95 should be an 'A'. Save this as a Series named letter_grades.
 
-# letter_grades = curved_grades.apply(lambda x: if x >= 90 = 'A', if x >=80 = 'B', if x >= 70 =, )
+letter_grades = pd.cut(curved_grades, [0, 60,70,90,101], labels=['F','d','c','b','a'])
+letter_grades = letter_grades.value_counts()
+
+
 
 
 # 6. Plot your new categorical letter_grades Series in a meaninful way and include 
 #    a title and axis labels.
 
-
+#letter_grades.plot.bar().set()
